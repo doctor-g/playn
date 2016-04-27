@@ -181,11 +181,16 @@ public class HtmlInput extends Input {
   }
 
   @Override public native boolean hasTouch() /*-{
+    console.log('hasTouch? touch thing is ' + ('ontouchstart' in $doc.documentElement));
+    console.log('hasTouch? useragent is ' +  ($wnd.navigator.userAgent.match(/ipad|iphone|android/i) != null));
+    console.log('hasTouch? because userAgent is ' + ($wnd.navigator.userAgent));
     return ('ontouchstart' in $doc.documentElement) ||
       ($wnd.navigator.userAgent.match(/ipad|iphone|android/i) != null);
   }-*/;
 
   @Override public native boolean hasMouse() /*-{
+    console.log('hasMouse? onmouse down is ' +   ('onmousedown' in $doc.documentElement));
+    console.log('hasMouse? userAgent thing is ' + ($wnd.navigator.userAgent.match(/ipad|iphone|android/i) == null));
     return ('onmousedown' in $doc.documentElement) &&
       ($wnd.navigator.userAgent.match(/ipad|iphone|android/i) == null);
   }-*/;
